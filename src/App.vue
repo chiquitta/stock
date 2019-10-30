@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <b-container>
-      <b-row class="py-4">
+    <b-container class="m-auto">
+      <b-row class="min-vh-100" align-v="center">
         <b-col cols="12" class="pb-5">
           <h2 class="font-weight-light text-center">
             台股買賣獲利線上試算
@@ -68,42 +68,75 @@
               </b-input-group>
             </b-col>
           </b-row>
-          <b-row class="pt-5">
-            <b-col cols="4" class="text-right">
+          <b-row class="pt-3">
+            <b-col cols="6" md="2" order="1" order-sm="1" class="text-right">
               <span class="text-black-50">買入價格</span>
               <p class="lead">
                 ${{ buyPrice.toLocaleString() }}
               </p>
             </b-col>
-            <b-col cols="4" class="text-right">
+            <b-col cols="6" md="2" order="3" order-sm="2" class="text-right">
               <span class="text-black-50">買入手續費</span>
               <p class="lead">
                 ${{ bfee.toLocaleString() }}
               </p>
             </b-col>
-            <b-col cols="4" class="text-right">
+            <b-col cols="6" md="2" order="5" order-sm="3" class="text-right">
             <span class="text-black-50">買入總價格</span>
             <p class="lead">
               ${{ buyTotal.toLocaleString() }}
             </p>
             </b-col>
-            <b-col class="text-right">
+            <b-col cols="6" md="2" order="2" order-sm="4" class="text-right">
               <span class="text-black-50">賣出價格</span>
               <p class="lead">
                 ${{ sellPrice.toLocaleString() }}
               </p>
             </b-col>
-            <b-col class="text-right">
-              <span class="text-black-50">賣出手續費</span>
+            <b-col cols="6" md="2" order="3" order-sm="5" class="text-right">
+              <span class="text-black-50">賣出手續費<small>(含證交稅)</small></span>
               <p class="lead">
-                ${{ sfee.toLocaleString() }}
+                ${{ (sfee+tax).toLocaleString() }}
+                <!-- <small class="text-black-50">
+                  (${{ tax.toLocaleString() }})
+                </small> -->
               </p>
             </b-col>
-            <b-col class="text-right">
+            <b-col cols="6" md="2" order="6" order-sm="6" class="text-right">
             <span class="text-black-50">賣出總價格</span>
             <p class="lead">
               ${{ sellTotal.toLocaleString() }}
             </p>
+            </b-col>
+            <b-col cols="6" md="6" order="7" class="text-right">
+              <span class="text-black-50">損益</span>
+              <p
+                :class="{
+                'lead': true,
+                'text-danger': profit > 0,
+                'text-success': profit < 0
+                }"
+              >
+                ${{ profit.toLocaleString() }}
+              </p>
+            </b-col>
+            <!-- <b-col cols="6" md="4" order="8" class="text-right">
+              <span class="text-black-50">賣出證交稅</span>
+              <p class="lead">
+                ${{ tax.toLocaleString() }}
+              </p>
+            </b-col> -->
+            <b-col cols="6" md="6" order="8" class="text-right">
+              <span class="text-black-50">獲利率</span>
+              <p
+                :class="{
+                'lead': true,
+                'text-danger': profitPercentage > 0,
+                'text-success': profitPercentage < 0
+                }"
+              >
+                {{ profitPercentage }}%
+              </p>
             </b-col>
           </b-row>
         </b-col>
@@ -164,8 +197,17 @@ export default {
       return Math.round(brokerFee < 20 ? 20 : brokerFee)  
     },
     sellTotal() {
-      return Math.round(this.sellPrice + this.sfee)
+      return Math.round(this.sellPrice - this.sfee - this.tax)
     },
+    profit() {
+      return this.sellTotal - this.buyTotal
+    },
+    profitPercentage() {
+      return (this.profit / this.buyTotal * 100).toFixed(3)
+    },
+    tax() {
+      return Math.round(this.sellPrice * 0.003)
+    }
   },
   methods: {
     range(start, end, step = 1) {
