@@ -5,7 +5,7 @@
         <!-- <b-col cols="12" class="h1 text-center py-5">
           Stock Calculator
         </b-col> -->
-        <b-col>
+        <b-col cols="12" md="6">
           <b-form-group
             label="買入成交價"
             class="text-black-50"
@@ -31,22 +31,22 @@
             </b-input-group>
           </b-form-group>
           <b-row class="pt-4">
-            <b-col>
+            <b-col class="text-right">
               <span class="text-black-50">買入價格</span>
               <p class="lead">
                 ${{ buyPrice.toLocaleString() }}
               </p>
             </b-col>
-            <b-col>
+            <b-col class="text-right">
               <span class="text-black-50">買入手續費</span>
               <p class="lead">
-                + ${{ buyFee.toLocaleString() }}
+                ${{ buyFee.toLocaleString() }}
               </p>
             </b-col>
-            <b-col>
+            <b-col class="text-right">
             <span class="text-black-50">買入總價格</span>
             <p class="lead">
-              = ${{ buyTotal.toLocaleString() }}
+              ${{ buyTotal.toLocaleString() }}
             </p>
             </b-col>
           </b-row>
