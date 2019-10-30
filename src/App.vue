@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <b-container>
-      <b-row class="py-5">
-        <!-- <b-col cols="12" class="h1 text-center py-5">
-          Stock Calculator
-        </b-col> -->
+      <b-row class="py-4">
+        <b-col cols="12" class="pb-3">
+          <!-- <h1>
+            台股買賣獲利線上試算
+          </h1> -->
+        </b-col>
         <b-col cols="12" md="6">
           <b-row>
             <b-col>
@@ -12,7 +14,7 @@
                 label="買入成交價"
                 class="text-black-50"
               >
-                <b-form-input v-model="buy" type="number" placeholder="請輸入" />
+                <b-form-input v-model="buy" type="number" size="lg" placeholder="請輸入" />
               </b-form-group>
             </b-col>
             <b-col>
@@ -21,7 +23,7 @@
                 class="text-black-50"
                 description="*一張為 1000 股"
               >
-                <b-form-input v-model="buyNum" type="number" placeholder="請輸入" />
+                <b-form-input v-model="buyNum" type="number" size="lg" placeholder="請輸入" />
               </b-form-group>
             </b-col>
           </b-row>
@@ -30,10 +32,10 @@
             class="text-black-50"
             description="可自行輸入折數"
           >
-            <b-form-select v-model="fee" :options="fees" />
+            <b-form-select v-model="fee" :options="fees" size="lg" />
             或
             <b-input-group append="折">
-              <b-form-input v-model="fee" type="number" placeholder="請輸入" />
+              <b-form-input v-model="fee" type="number" size="lg" placeholder="請輸入" />
             </b-input-group>
           </b-form-group>
           <b-row class="pt-4">
