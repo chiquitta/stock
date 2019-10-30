@@ -86,6 +86,7 @@ export default {
       sell: 0,
       sellNum: 1000,
       brokerFee: null,
+      feePercentage: 0.001425,
       fee: 6,
       fees: this.range(0, 10, 0.5).map(val => {
         let text = `${val}折`
@@ -100,7 +101,7 @@ export default {
       return this.buy * this.buyNum
     },
     buyFee() {
-      const brokerFee = this.buy * this.buyNum * 0.001425 * this.fee * 0.1
+      const brokerFee = this.buy * this.buyNum * this.feePercentage * this.fee * 0.1
       return Math.round(brokerFee < 20 ? 20 : brokerFee)
     },
     buyTotal() {
