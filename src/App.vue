@@ -6,19 +6,25 @@
           Stock Calculator
         </b-col> -->
         <b-col cols="12" md="6">
-          <b-form-group
-            label="買入成交價"
-            class="text-black-50"
-          >
-            <b-form-input v-model="buy" type="number" placeholder="請輸入" />
-          </b-form-group>
-          <b-form-group
-            label="買入股數"
-            class="text-black-50"
-            description="*一張為 1000 股"
-          >
-            <b-form-input v-model="buyNum" type="number" placeholder="請輸入" />
-          </b-form-group>
+          <b-row>
+            <b-col>
+              <b-form-group
+                label="買入成交價"
+                class="text-black-50"
+              >
+                <b-form-input v-model="buy" type="number" placeholder="請輸入" />
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group
+                label="買入股數"
+                class="text-black-50"
+                description="*一張為 1000 股"
+              >
+                <b-form-input v-model="buyNum" type="number" placeholder="請輸入" />
+              </b-form-group>
+            </b-col>
+          </b-row>
           <b-form-group
             label="券商下單折扣"
             class="text-black-50"
