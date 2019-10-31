@@ -37,7 +37,7 @@
           </div>
         </b-col>
         <b-col cols="12">
-          <b-row>
+          <b-row class="bg-light py-3">
             <b-col cols="6" md="3" order="1" order-sm="1">
               <b-form-group
                 label="買入成交價"
@@ -108,7 +108,7 @@
               </small> -->
             </b-col>
           </b-row>
-          <b-row class="mt-3 py-3 bg-light">
+          <b-row class="pt-3">
             <b-col cols="6" md="2" order="1" order-sm="1" class="text-right">
               <span class="text-black-50">買入價格</span>
               <p class="lead font-weight-bold">
