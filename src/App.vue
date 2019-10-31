@@ -13,7 +13,7 @@
             data-href="https://twstocks.com/" 
             data-layout="button">
           </div>
-          <div class="mt-1">
+          <div class="float-right mt-1 ml-1">
             <div 
               class="line-it-button"
               data-lang="zh_Hant"
