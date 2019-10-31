@@ -7,7 +7,16 @@
             台股買賣獲利線上試算
           </h2>
         </b-col>
-        <b-col cols="12" class="text-right">
+        <b-col cols="8" md="6">
+          <b-form-group label="">
+            <b-form-radio-group
+              v-model="type"
+              :options="options"
+              size="lg"
+            />
+          </b-form-group>
+        </b-col>
+        <b-col cols="4" md="6" class="text-right">
           <div 
             class="fb-share-button" 
             data-href="https://twstocks.com/" 
@@ -32,39 +41,39 @@
             <b-col cols="6" md="3" order="1" order-sm="1">
               <b-form-group
                 label="買入成交價"
-                class="text-black-50"
+                class="text-black-50 font-weight-light"
               >
-                <b-form-input v-model="buy" type="number" size="lg" placeholder="請輸入" />
+                <b-form-input v-model="buy" type="number" size="lg" placeholder="請輸入成交價" />
               </b-form-group>
             </b-col>
             <b-col cols="6" md="3" order="3" order-sm="2">
               <b-form-group
                 label="買入股數"
-                class="text-black-50"
-                description=""
+                class="text-black-50 font-weight-light"
+                description="(一張為 1000 股)"
               >
-                <b-form-input v-model="buyNum" type="number" size="lg" placeholder="請輸入" />
+                <b-form-input v-model="buyNum" type="number" size="lg" placeholder="請輸入股數" />
               </b-form-group>
             </b-col>
             <b-col cols="6" md="3" order="2" order-sm="3">
               <b-form-group
                 label="賣出成交價"
-                class="text-black-50"
+                class="text-black-50 font-weight-light"
               >
-                <b-form-input v-model="sell" type="number" size="lg" placeholder="請輸入" />
+                <b-form-input v-model="sell" type="number" size="lg" placeholder="請輸入成交價" />
               </b-form-group>
             </b-col>
             <b-col cols="6" md="3" order="4" order-sm="4">
               <b-form-group
                 label="賣出股數"
-                class="text-black-50"
-                description="一張為 1000 股"
+                class="text-black-50 font-weight-light"
+                description="(一張為 1000 股)"
               >
-                <b-form-input v-model="sellNum" type="number" size="lg" placeholder="請輸入" />
+                <b-form-input v-model="sellNum" type="number" size="lg" placeholder="請輸入股數" />
               </b-form-group>
             </b-col>
             <b-col cols="6" order="5" order-sm="5">
-              <label class="text-black-50">
+              <label class="text-black-50 font-weight-light">
                 下單折扣
                 <b-link class="small" @click="manualFeeA = !manualFeeA">
                   手動輸入
@@ -74,9 +83,14 @@
               <b-input-group v-else append="折">
                 <b-form-input v-model="sellFee" type="number" size="lg" placeholder="請輸入" />
               </b-input-group>
+              <div class="text-right">
+                <small class="text-black-50 font-weight-light">
+                  (以 0.1425% 計算)
+                </small>
+              </div>
             </b-col>
             <b-col cols="6" order="6" order-sm="6">
-              <label class="text-black-50">
+              <label class="text-black-50 font-weight-light">
                 下單折扣
                 <b-link class="small" @click="manualFeeB = !manualFeeB">
                   手動輸入
@@ -86,6 +100,11 @@
               <b-input-group v-else append="折">
                 <b-form-input v-model="buyFee" type="number" size="lg" placeholder="請輸入" />
               </b-input-group>
+              <div class="text-right">
+                <small class="text-black-50 font-weight-light">
+                  (以 0.1425% 計算)
+                </small>
+              </div>
             </b-col>
           </b-row>
           <b-row class="pt-3">
@@ -195,11 +214,16 @@ export default {
       buyFee: 6,
       sellFee: 6,
       fees: this.range(0, 10, 0.5).map(val => {
-        let text = `${val}折`
+        let text = `${val} 折`
         text = val === 10 ? '無折扣' : text
         text = val === 0 ? '免手續費' : text
         return { value: val, text }
-      })
+      }),
+      type: 0.003,
+      options: [
+        { text: '台股', value: 0.003 },
+        { text: 'ETF', value: 0.001 }
+      ]
     }
   },
   computed: {
@@ -229,10 +253,11 @@ export default {
       return this.sellTotal - this.buyTotal
     },
     profitPercentage() {
+      if(this.buyTotal === 0) return 0
       return ((this.profit / this.buyTotal * 100) || 0).toFixed(3)
     },
     tax() {
-      return Math.round(this.sellPrice * 0.003)
+      return Math.round(this.sellPrice * this.type)
     }
   },
   methods: {
