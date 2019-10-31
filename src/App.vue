@@ -21,7 +21,7 @@
               <b-form-group
                 label="買入股數"
                 class="text-black-50"
-                description="一張為 1000 股"
+                description=""
               >
                 <b-form-input v-model="buyNum" type="number" size="lg" placeholder="請輸入" />
               </b-form-group>
@@ -45,7 +45,7 @@
             </b-col>
             <b-col cols="6" order="5" order-sm="5">
               <label class="text-black-50">
-                券商下單折扣
+                下單折扣
                 <b-link class="small" @click="manualFeeA = !manualFeeA">
                   手動輸入
                 </b-link>
@@ -57,7 +57,7 @@
             </b-col>
             <b-col cols="6" order="6" order-sm="6">
               <label class="text-black-50">
-                券商下單折扣
+                下單折扣
                 <b-link class="small" @click="manualFeeB = !manualFeeB">
                   手動輸入
                 </b-link>
@@ -94,9 +94,11 @@
               </p>
             </b-col>
             <b-col cols="6" md="2" order="3" order-sm="5" class="text-right">
-              <span class="text-black-50">賣出手續費<small>(含證交稅)</small></span>
+              <span class="text-black-50">賣出手續費+證交稅</span>
               <p class="lead">
-                ${{ (sfee+tax).toLocaleString() }}
+                ${{ sfee.toLocaleString() }}
+                +
+                ${{ tax.toLocaleString() }}
                 <!-- <small class="text-black-50">
                   (${{ tax.toLocaleString() }})
                 </small> -->
@@ -112,7 +114,8 @@
               <span class="text-black-50">損益</span>
               <p
                 :class="{
-                'lead': true,
+                'h4': true,
+                'text-monospace': true,
                 'font-weight-bold': true,
                 'text-danger': profit > 0,
                 'text-success': profit < 0
@@ -131,7 +134,8 @@
               <span class="text-black-50">獲利率</span>
               <p
                 :class="{
-                'lead': true,
+                'h4': true,
+                'text-monospace': true,
                 'font-weight-bold': true,
                 'text-danger': profitPercentage > 0,
                 'text-success': profitPercentage < 0
