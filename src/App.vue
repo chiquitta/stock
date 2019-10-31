@@ -13,6 +13,7 @@
               v-model="type"
               :options="options"
               size="lg"
+              class="mt-3"
             />
           </b-form-group>
         </b-col>
