@@ -2,10 +2,30 @@
   <div id="app">
     <b-container class="m-auto">
       <b-row class="min-vh-100" align-v="center">
-        <b-col cols="12" class="pb-5">
+        <b-col cols="12">
           <h2 class="font-weight-light text-center">
             台股買賣獲利線上試算
           </h2>
+        </b-col>
+        <b-col cols="12" class="text-right">
+          <div 
+            class="fb-share-button" 
+            data-href="https://twstocks.com/" 
+            data-layout="button">
+          </div>
+          <div class="mt-1">
+            <div 
+              class="line-it-button"
+              data-lang="zh_Hant"
+              data-type="share-a"
+              data-ver="3"
+              data-url="https://twstocks.com/"
+              data-color="default"
+              data-size="small"
+              data-count="false"
+              style="display: none;"
+            ></div>
+          </div>
         </b-col>
         <b-col cols="12">
           <b-row>
