@@ -7,7 +7,7 @@
             台股買賣獲利線上試算
           </h2>
         </b-col>
-        <b-col cols="8" md="6">
+        <b-col cols="7" md="6">
           <b-form-group label="">
             <b-form-radio-group
               v-model="type"
@@ -16,7 +16,7 @@
             />
           </b-form-group>
         </b-col>
-        <b-col cols="4" md="6" class="text-right">
+        <b-col cols="5" md="6" class="text-right">
           <div 
             class="fb-share-button" 
             data-href="https://twstocks.com/" 
