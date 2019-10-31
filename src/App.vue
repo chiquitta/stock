@@ -86,11 +86,11 @@
               <b-input-group v-else append="折">
                 <b-form-input v-model="sellFee" type="number" size="lg" placeholder="請輸入" />
               </b-input-group>
-              <div class="text-right">
+              <!-- <div class="text-right">
                 <small class="text-black-50 font-weight-light">
                   (以 0.1425% 計算)
                 </small>
-              </div>
+              </div> -->
             </b-col>
             <b-col cols="6" order="6" order-sm="6">
               <label class="text-black-50 font-weight-light">
@@ -108,7 +108,7 @@
               </small> -->
             </b-col>
           </b-row>
-          <b-row class="pt-3">
+          <b-row>
             <b-col cols="6" md="2" order="1" order-sm="1" class="text-right">
               <span class="text-black-50">買入價格</span>
               <p class="lead font-weight-bold">
