@@ -108,7 +108,7 @@
               </small> -->
             </b-col>
           </b-row>
-          <b-row class="pt-3">
+          <b-row class="mt-3 py-3 bg-light">
             <b-col cols="6" md="2" order="1" order-sm="1" class="text-right">
               <span class="text-black-50">買入價格</span>
               <p class="lead font-weight-bold">
