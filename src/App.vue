@@ -48,9 +48,8 @@
             </b-col>
             <b-col cols="6" md="3" order="3" order-sm="2">
               <b-form-group
-                label="買入股數"
+                label="買入股數(一張為 1000 股)"
                 class="text-black-50 font-weight-light"
-                description="(一張為 1000 股)"
               >
                 <b-form-input v-model="buyNum" type="number" size="lg" placeholder="請輸入股數" />
               </b-form-group>
@@ -65,9 +64,8 @@
             </b-col>
             <b-col cols="6" md="3" order="4" order-sm="4">
               <b-form-group
-                label="賣出股數"
+                label="賣出股數(一張為 1000 股)"
                 class="text-black-50 font-weight-light"
-                description="(一張為 1000 股)"
               >
                 <b-form-input v-model="sellNum" type="number" size="lg" placeholder="請輸入股數" />
               </b-form-group>
@@ -83,11 +81,9 @@
               <b-input-group v-else append="折">
                 <b-form-input v-model="sellFee" type="number" size="lg" placeholder="請輸入" />
               </b-input-group>
-              <div class="text-right">
-                <small class="text-black-50 font-weight-light">
-                  (以 0.1425% 計算)
-                </small>
-              </div>
+              <small class="text-black-50 font-weight-light">
+                (以 0.1425% 計算)
+              </small>
             </b-col>
             <b-col cols="6" order="6" order-sm="6">
               <label class="text-black-50 font-weight-light">
@@ -100,11 +96,9 @@
               <b-input-group v-else append="折">
                 <b-form-input v-model="buyFee" type="number" size="lg" placeholder="請輸入" />
               </b-input-group>
-              <div class="text-right">
-                <small class="text-black-50 font-weight-light">
-                  (以 0.1425% 計算)
-                </small>
-              </div>
+              <small class="text-black-50 font-weight-light">
+                (以 0.1425% 計算)
+              </small>
             </b-col>
           </b-row>
           <b-row class="pt-3">
