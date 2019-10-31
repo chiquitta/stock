@@ -49,15 +49,15 @@
             </b-col>
             <b-col cols="6" md="3" order="3" order-sm="2">
               <b-form-group
-                label="買入股數"
+                label="買入股數(一張1000股)"
                 class="text-black-50 font-weight-light"
               >
                 <b-form-input v-model="buyNum" type="number" size="lg" placeholder="請輸入股數" />
-                <div class="text-right">
+                <!-- <div class="text-right">
                   <small class="text-black-50 font-weight-light">
                     (一張為 1000 股)
                   </small>
-                </div>
+                </div> -->
               </b-form-group>
             </b-col>
             <b-col cols="6" md="3" order="2" order-sm="3">
@@ -70,7 +70,7 @@
             </b-col>
             <b-col cols="6" md="3" order="4" order-sm="4">
               <b-form-group
-                label="賣出股數"
+                label="賣出股數(一張1000股)"
                 class="text-black-50 font-weight-light"
               >
                 <b-form-input v-model="sellNum" type="number" size="lg" placeholder="請輸入股數" />
@@ -259,6 +259,7 @@ export default {
       return ((this.profit / this.buyTotal * 100) || 0).toFixed(3)
     },
     tax() {
+      console.dir(this.type)
       return Math.round(this.sellPrice * this.type)
     }
   },
