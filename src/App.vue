@@ -113,6 +113,7 @@
               <p
                 :class="{
                 'lead': true,
+                'font-weight-bold': true,
                 'text-danger': profit > 0,
                 'text-success': profit < 0
                 }"
@@ -131,6 +132,7 @@
               <p
                 :class="{
                 'lead': true,
+                'font-weight-bold': true,
                 'text-danger': profitPercentage > 0,
                 'text-success': profitPercentage < 0
                 }"
