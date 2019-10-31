@@ -71,31 +71,31 @@
           <b-row class="pt-3">
             <b-col cols="6" md="2" order="1" order-sm="1" class="text-right">
               <span class="text-black-50">買入價格</span>
-              <p class="lead">
+              <p class="lead font-weight-bold">
                 ${{ buyPrice.toLocaleString() }}
               </p>
             </b-col>
             <b-col cols="6" md="2" order="3" order-sm="2" class="text-right">
               <span class="text-black-50">買入手續費</span>
-              <p class="lead">
+              <p class="lead font-weight-bold">
                 ${{ bfee.toLocaleString() }}
               </p>
             </b-col>
             <b-col cols="6" md="2" order="5" order-sm="3" class="text-right">
             <span class="text-black-50">買入總價格</span>
-            <p class="lead">
+            <p class="lead font-weight-bold">
               ${{ buyTotal.toLocaleString() }}
             </p>
             </b-col>
             <b-col cols="6" md="2" order="2" order-sm="4" class="text-right">
               <span class="text-black-50">賣出價格</span>
-              <p class="lead">
+              <p class="lead font-weight-bold">
                 ${{ sellPrice.toLocaleString() }}
               </p>
             </b-col>
             <b-col cols="6" md="2" order="3" order-sm="5" class="text-right">
               <span class="text-black-50">賣出手續費+證交稅</span>
-              <p class="lead">
+              <p class="lead font-weight-bold">
                 ${{ sfee.toLocaleString() }}
                 +
                 ${{ tax.toLocaleString() }}
@@ -106,7 +106,7 @@
             </b-col>
             <b-col cols="6" md="2" order="6" order-sm="6" class="text-right">
             <span class="text-black-50">賣出總價格</span>
-            <p class="lead">
+            <p class="lead font-weight-bold">
               ${{ sellTotal.toLocaleString() }}
             </p>
             </b-col>
@@ -164,9 +164,9 @@ export default {
   },
   data() {
     return {
-      buy: 40,
+      buy: null,
       buyNum: 1000,
-      sell: 42,
+      sell: null,
       sellNum: 1000,
       manualFeeA: false,
       manualFeeB: false,
@@ -209,7 +209,7 @@ export default {
       return this.sellTotal - this.buyTotal
     },
     profitPercentage() {
-      return (this.profit / this.buyTotal * 100).toFixed(3)
+      return ((this.profit / this.buyTotal * 100) || 0).toFixed(3)
     },
     tax() {
       return Math.round(this.sellPrice * 0.003)
