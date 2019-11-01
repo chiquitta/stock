@@ -38,7 +38,7 @@
           </div>
         </b-col>
         <b-col cols="12">
-          <b-row class="bg-light py-3">
+          <b-row class="bg-light py-5">
             <b-col cols="6" md="3" order="1" order-sm="1">
               <b-form-group
                 label="買入成交價"
@@ -109,7 +109,7 @@
               </small> -->
             </b-col>
           </b-row>
-          <b-row>
+          <b-row class="py-5">
             <b-col cols="6" md="2" order="1" order-sm="1" class="text-right">
               <span class="text-black-50">買入價格</span>
               <p class="lead font-weight-bold">
@@ -259,7 +259,6 @@ export default {
       return ((this.profit / this.buyTotal * 100) || 0).toFixed(3)
     },
     tax() {
-      console.dir(this.type)
       return Math.round(this.sellPrice * this.type)
     }
   },
