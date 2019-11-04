@@ -44,7 +44,7 @@
                 label="買入成交價"
                 class="text-black-50 font-weight-light"
               >
-                <b-form-input v-model="buy" type="number" size="lg" placeholder="請輸入成交價" />
+                <b-form-input v-model="buy" type="number" size="lg" placeholder="" />
               </b-form-group>
             </b-col>
             <b-col cols="6" md="3" order="3" order-sm="2">
@@ -65,7 +65,7 @@
                 label="賣出成交價"
                 class="text-black-50 font-weight-light"
               >
-                <b-form-input v-model="sell" type="number" size="lg" placeholder="請輸入成交價" />
+                <b-form-input v-model="sell" type="number" size="lg" placeholder="" />
               </b-form-group>
             </b-col>
             <b-col cols="6" md="3" order="4" order-sm="4">
@@ -79,34 +79,26 @@
             <b-col cols="6" order="5" order-sm="5">
               <label class="text-black-50 font-weight-light">
                 下單折扣
-                <b-link class="small" @click="manualFeeA = !manualFeeA">
-                  手動輸入
-                </b-link>
-              </label>
-              <b-form-select v-if="!manualFeeA" v-model="sellFee" :options="fees" size="lg" />
-              <b-input-group v-else append="折">
-                <b-form-input v-model="sellFee" type="number" size="lg" placeholder="請輸入" />
-              </b-input-group>
-              <!-- <div class="text-right">
-                <small class="text-black-50 font-weight-light">
-                  (以 0.1425% 計算)
-                </small>
-              </div> -->
-            </b-col>
-            <b-col cols="6" order="6" order-sm="6">
-              <label class="text-black-50 font-weight-light">
-                下單折扣
                 <b-link class="small" @click="manualFeeB = !manualFeeB">
                   手動輸入
                 </b-link>
               </label>
               <b-form-select v-if="!manualFeeB" v-model="buyFee" :options="fees" size="lg" />
               <b-input-group v-else append="折">
-                <b-form-input v-model="buyFee" type="number" size="lg" placeholder="請輸入" />
+                <b-form-input v-model="buyFee" type="number" size="lg" placeholder="請輸入" max="10" min="0" />
               </b-input-group>
-              <!-- <small class="text-black-50 font-weight-light">
-                (以 0.1425% 計算)
-              </small> -->
+            </b-col>
+            <b-col cols="6" order="6" order-sm="6">
+              <label class="text-black-50 font-weight-light">
+                下單折扣
+                <b-link class="small" @click="manualFeeA = !manualFeeA">
+                  手動輸入
+                </b-link>
+              </label>
+              <b-form-select v-if="!manualFeeA" v-model="sellFee" :options="fees" size="lg" />
+              <b-input-group v-else append="折">
+                <b-form-input v-model="sellFee" type="number" size="lg" placeholder="請輸入" max="10" min="0" />
+              </b-input-group>
             </b-col>
           </b-row>
           <b-row class="py-5">
@@ -266,6 +258,10 @@ export default {
     range(start, end, step = 1) {
       const len = Math.floor((end - start) / step) + 1
       return Array(len).fill().map((_, idx) => start + (idx * step)).reverse()
+    },
+    selectVal(ele) {
+      this.$set(this, 'sellFee', ele)
+      console.dir(this.sellFee)
     }
   }
 }
