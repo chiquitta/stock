@@ -2,10 +2,10 @@
   <div id="app">
     <b-container class="m-auto">
       <b-row class="min-vh-100" align-v="center">
-        <b-col cols="12">
-          <h2 class="font-weight-light text-center">
+        <b-col cols="12" class="text-center">
+          <b-link href="/" class="h2 font-weight-light text-decoration-none">
             台股買賣獲利線上試算
-          </h2>
+          </b-link>
         </b-col>
         <b-col cols="7" md="6">
           <b-form-group label="">
