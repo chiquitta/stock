@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
+import VueRouter from 'vue-router'
+import HelloWorld from '@/components/HelloWorld'
+import Policy from '@/components/Policy'
 import BootstrapVue from 'bootstrap-vue'
 import feather from 'vue-icon'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -16,7 +19,23 @@ Vue.use(feather, {
     }
   }
 })
+Vue.use(VueRouter)
+
+const routes = [
+  { path: '/', component: HelloWorld },
+  { path: '/policy', component: Policy }
+]
+
+const router = new VueRouter({
+  mode: 'history',
+  routes
+})
 
 new Vue({
-  render: h => h(App),
+  router,
+  render: h => h(App)
 }).$mount('#app')
+
+// new Vue({
+//   render: h => h(App),
+// }).$mount('#app')
