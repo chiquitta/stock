@@ -17,13 +17,13 @@
         </b-form-group>
       </b-col>
       <b-col cols="5" md="6" class="text-right">
-        <div 
-          class="fb-share-button" 
-          data-href="https://twstocks.com/" 
+        <div
+          class="fb-share-button"
+          data-href="https://twstocks.com/"
           data-layout="button">
         </div>
         <div class="float-right mt-1 ml-1">
-          <div 
+          <div
             class="line-it-button"
             data-lang="zh_Hant"
             data-type="share-a"
@@ -84,7 +84,13 @@
             </label>
             <b-form-select v-if="!manualFeeB" v-model="buyFee" :options="fees" size="lg" />
             <b-input-group v-else append="折">
-              <b-form-input v-model="buyFee" type="number" size="lg" placeholder="請輸入" max="10" min="0" />
+              <b-form-input
+                v-model="buyFee"
+                type="number"
+                size="lg"
+                placeholder="請輸入"
+                max="10"
+                min="0" />
             </b-input-group>
           </b-col>
           <b-col cols="6" order="6" order-sm="6">
@@ -96,7 +102,13 @@
             </label>
             <b-form-select v-if="!manualFeeA" v-model="sellFee" :options="fees" size="lg" />
             <b-input-group v-else append="折">
-              <b-form-input v-model="sellFee" type="number" size="lg" placeholder="請輸入" max="10" min="0" />
+              <b-form-input
+                v-model="sellFee"
+                type="number"
+                size="lg"
+                placeholder="請輸入"
+                max="10"
+                min="0" />
             </b-input-group>
           </b-col>
         </b-row>
@@ -185,12 +197,10 @@
 
 <script>
 /* eslint-disable no-console */
-// import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'HelloWorld',
   components: {
-    // HelloWorld
   },
   data() {
     return {
@@ -204,64 +214,64 @@ export default {
       feePercentage: 0.001425,
       buyFee: 6,
       sellFee: 6,
-      fees: this.range(0, 10, 0.5).map(val => {
-        let text = `${val} 折`
-        text = val === 10 ? '無折扣' : text
-        text = val === 0 ? '免手續費' : text
-        return { value: val, text }
+      fees: this.range(0, 10, 0.5).map((val) => {
+        let text = `${val} 折`;
+        text = val === 10 ? '無折扣' : text;
+        text = val === 0 ? '免手續費' : text;
+        return { value: val, text };
       }),
       type: 0.003,
       options: [
         { text: '台股', value: 0.003 },
-        { text: 'ETF', value: 0.001 }
-      ]
-    }
+        { text: 'ETF', value: 0.001 },
+      ],
+    };
   },
   computed: {
     buyPrice() {
-      return this.buy * this.buyNum
+      return this.buy * this.buyNum;
     },
     bfee() {
-      const brokerFee = this.buyPrice * this.feePercentage * this.buyFee * 0.1
-      if(brokerFee === 0) return 0
-      return Math.round(brokerFee < 20 ? 20 : brokerFee)
+      const brokerFee = this.buyPrice * this.feePercentage * this.buyFee * 0.1;
+      if (brokerFee === 0) return 0;
+      return Math.round(brokerFee < 20 ? 20 : brokerFee);
     },
     buyTotal() {
-      return Math.round(this.buyPrice + this.bfee)
+      return Math.round(this.buyPrice + this.bfee);
     },
     sellPrice() {
-      return this.sell * this.sellNum
+      return this.sell * this.sellNum;
     },
     sfee() {
-      const brokerFee = this.sellPrice * this.feePercentage * this.sellFee * 0.1
-      if(brokerFee === 0) return 0
-      return Math.round(brokerFee < 20 ? 20 : brokerFee)  
+      const brokerFee = this.sellPrice * this.feePercentage * this.sellFee * 0.1;
+      if (brokerFee === 0) return 0;
+      return Math.round(brokerFee < 20 ? 20 : brokerFee);
     },
     sellTotal() {
-      return Math.round(this.sellPrice - this.sfee - this.tax)
+      return Math.round(this.sellPrice - this.sfee - this.tax);
     },
     profit() {
-      return this.sellTotal - this.buyTotal
+      return this.sellTotal - this.buyTotal;
     },
     profitPercentage() {
-      if(this.buyTotal === 0) return 0
-      return ((this.profit / this.buyTotal * 100) || 0).toFixed(3)
+      if (this.buyTotal === 0) return 0;
+      return (((this.profit / this.buyTotal) * 100) || 0).toFixed(3);
     },
     tax() {
-      return Math.round(this.sellPrice * this.type)
-    }
+      return Math.round(this.sellPrice * this.type);
+    },
   },
   methods: {
     range(start, end, step = 1) {
-      const len = Math.floor((end - start) / step) + 1
-      return Array(len).fill().map((_, idx) => start + (idx * step)).reverse()
+      const len = Math.floor((end - start) / step) + 1;
+      return Array(len).fill().map((_, idx) => start + (idx * step)).reverse();
     },
     selectVal(ele) {
-      this.$set(this, 'sellFee', ele)
-      console.dir(this.sellFee)
-    }
-  }
-}
+      this.$set(this, 'sellFee', ele);
+      console.dir(this.sellFee);
+    },
+  },
+};
 </script>
 
 <style>

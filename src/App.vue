@@ -8,6 +8,6 @@
 /* eslint-disable no-console */
 
 export default {
-  name: 'app'
-}
+  name: 'app',
+};
 </script>
