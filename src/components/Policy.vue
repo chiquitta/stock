@@ -42,15 +42,17 @@
     <p>本網站隱私權保護政策將因應需求隨時進行修正，修正後的條款將刊登於網站上。</p>
   </div>
 </template>
-	
+
 <script>
+/* eslint max-len: ["error", { "code": 300 }] */
+
 export default {
-  name: "Policy",
+  name: 'Policy',
   data() {
     return {
-      message: "Policy"
+      message: 'Policy',
     };
-  }
+  },
 };
 </script>
 
