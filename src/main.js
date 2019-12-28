@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Home from '@/components/Home'
 import Policy from '@/components/Policy'
 import BootstrapVue from 'bootstrap-vue'
 import feather from 'vue-icon'
@@ -22,7 +22,7 @@ Vue.use(feather, {
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', component: HelloWorld },
+  { path: '/', component: Home },
   { path: '/policy', component: Policy }
 ]
 
